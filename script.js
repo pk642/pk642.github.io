@@ -5,11 +5,18 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
       const message = document.getElementById("message").value;
 
-      document.getElementById("response").innerHTML = `<p>Thank you, <strong>${name}</strong>! Your feedback has been submitted.</p>`;
-
-      form.reset();
+      // Simple validation check
+      if (name && email && message) {
+        document.getElementById("response").innerHTML = `
+          <p>Thank you, <strong>${name}</strong>! Your feedback has been submitted.</p>
+        `;
+        form.reset();
+      } else {
+        document.getElementById("response").innerHTML = `<p style="color: red;">Please fill in all fields.</p>`;
+      }
     });
   }
 });
